@@ -82,13 +82,8 @@ class SwiftStorage {
 	private function __construct( $containerName, $pathPrefix = '', $dataCenter = null ) {
 		$this->wg = \F::app()->wg;
 
-		if ( !is_null( $dataCenter )  ) {
-			$this->swiftServer = $this->wg->FSSwiftDC[ $dataCenter ][ 'server' ];
-			$this->swiftConfig = $this->wg->FSSwiftDC[ $dataCenter ][ 'config' ];
-		} else {
-			$this->swiftConfig = $this->wg->FSSwiftConfig;
-			$this->swiftServer = $this->wg->FSSwiftServer;
-		}
+		$this->swiftConfig = $this->wg->FSSwiftConfig;
+		$this->swiftServer = $this->wg->FSSwiftServer;
 
 		$this->containerName = $containerName;
 		$this->pathPrefix = rtrim( $pathPrefix, '/' );
